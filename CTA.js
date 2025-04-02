@@ -2,6 +2,7 @@ const axios = require('axios');
 const qs = require('qs'); // For form-urlencoded POST data
 const fs = require('fs');
 const path = require('path');
+const { DateTime } = require('luxon');
 
 const API_KEY = 'RR2tqFz3v8luyzBlYWl1BEsLjWbKvede';
 
@@ -19,19 +20,10 @@ function getNextSunday() {
 }
 
 function getNextSundaySydneyTime() {
-  const today = new Date();
-
-  // Convert to Sydney time (UTC+10 or UTC+11 depending on DST)
-  const sydneyDate = new Date(today.toLocaleString('en-US', { timeZone: 'Australia/Sydney' }));
-
-  const dayOfWeek = sydneyDate.getDay();
-  const daysUntilNextSunday = dayOfWeek === 0 ? 7 : 7 - dayOfWeek;
-
-  const nextSunday = new Date(sydneyDate);
-  nextSunday.setDate(dayOfWeek + daysUntilNextSunday);
-  nextSunday.setHours(0, 0, 0, 0);
-
-  return nextSunday.toISOString().split('T')[0]; // e.g. "2025-04-06"
+  const now = DateTime.now().setZone('Australia/Sydney');
+  const daysUntilSunday = (7 - now.weekday) % 7 || 7;
+  const nextSunday = now.plus({ days: daysUntilSunday }).startOf('day');
+  return nextSunday.toISODate(); // e.g. "2025-04-06"
 }
 
 function addDays(dateStr, days) {
@@ -44,8 +36,9 @@ async function getSundayServiceID() {
   const targetDate = getNextSundaySydneyTime();
   const endDate = addDays(targetDate, 1);
 
-  console.log(`🕒 GitHub now thinks the date is: ${new Date().toISOString()}`);
-  console.log(`🎯 Target (Sydney) Sunday is: ${targetDate}`);
+  console.log(`🕒 GitHub now (UTC): ${new Date().toISOString()}`);
+  console.log(`🕐 Sydney now: ${DateTime.now().setZone('Australia/Sydney').toISO()}`);
+  console.log(`🎯 Target Sunday (Sydney): ${targetDate}`);
 
   console.log(`Requesting services between: ${targetDate} and ${endDate}`);
 
