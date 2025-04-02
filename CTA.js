@@ -44,6 +44,9 @@ async function getSundayServiceID() {
   const targetDate = getNextSundaySydneyTime();
   const endDate = addDays(targetDate, 1);
 
+  console.log(`🕒 GitHub now thinks the date is: ${new Date().toISOString()}`);
+  console.log(`🎯 Target (Sydney) Sunday is: ${targetDate}`);
+
   console.log(`Requesting services between: ${targetDate} and ${endDate}`);
 
   try {
