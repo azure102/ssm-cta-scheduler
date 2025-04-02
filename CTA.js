@@ -212,8 +212,8 @@ async function sendEmailWithAttachment({
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'felix.agung@gmail.com',
-      pass: 'yjrq mbdn vatr utbe'  // Not your Gmail password
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS  // Not your Gmail password
     }
   });
 
