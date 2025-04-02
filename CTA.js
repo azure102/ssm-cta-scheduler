@@ -18,6 +18,22 @@ function getNextSunday() {
   return nextSunday.toISOString().split('T')[0]; // Format: YYYY-MM-DD
 }
 
+function getNextSundaySydneyTime() {
+  const today = new Date();
+
+  // Convert to Sydney time (UTC+10 or UTC+11 depending on DST)
+  const sydneyDate = new Date(today.toLocaleString('en-US', { timeZone: 'Australia/Sydney' }));
+
+  const dayOfWeek = sydneyDate.getDay();
+  const daysUntilNextSunday = dayOfWeek === 0 ? 7 : 7 - dayOfWeek;
+
+  const nextSunday = new Date(sydneyDate);
+  nextSunday.setDate(dayOfWeek + daysUntilNextSunday);
+  nextSunday.setHours(0, 0, 0, 0);
+
+  return nextSunday.toISOString().split('T')[0]; // e.g. "2025-04-06"
+}
+
 function addDays(dateStr, days) {
   const date = new Date(dateStr);
   date.setDate(date.getDate() + days);
@@ -25,7 +41,7 @@ function addDays(dateStr, days) {
 }
 
 async function getSundayServiceID() {
-  const targetDate = getNextSunday();
+  const targetDate = getNextSundaySydneyTime();
   const endDate = addDays(targetDate, 1);
 
   console.log(`Requesting services between: ${targetDate} and ${endDate}`);
@@ -204,7 +220,7 @@ async function main() {
     return;
   }
 
-  const roles = mapVolunteersToRoles(volunteers, getNextSunday());
+  const roles = mapVolunteersToRoles(volunteers, getNextSundaySydneyTime());
   exportVolunteersToTemplateFile(roles); // or any further processing
 }
 
