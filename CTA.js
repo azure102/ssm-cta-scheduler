@@ -2,6 +2,7 @@ const axios = require('axios');
 const qs = require('qs'); // For form-urlencoded POST data
 const fs = require('fs');
 const path = require('path');
+const nodemailer = require('nodemailer');
 const { DateTime } = require('luxon');
 
 const API_KEY = 'RR2tqFz3v8luyzBlYWl1BEsLjWbKvede';
@@ -201,7 +202,41 @@ function exportVolunteersToTemplateFile(roleMap) {
   console.log('SSM_Comms_Template_FINAL.txt created with role-based mapping');
 }
 
+async function sendEmailWithAttachment({
+  to,
+  subject,
+  text,
+  attachmentPath
+}) {
+  // Replace with your email & app password or SMTP credentials
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'felix.agung@gmail.com',
+      pass: 'yjrq mbdn vatr utbe'  // Not your Gmail password
+    }
+  });
 
+  const mailOptions = {
+    from: '"SSM Communication Template Project Bot" <felix.agung@gmail.com>',
+    to,
+    subject,
+    text,
+    attachments: [
+      {
+        filename: 'SSM_Comms_Template_FINAL.txt',
+        path: attachmentPath
+      }
+    ]
+  };
+
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log('✅ Email sent:', info.response);
+  } catch (err) {
+    console.error('❌ Failed to send email:', err.message);
+  }
+}
 
 async function main() {
   const serviceId = await getSundayServiceID();
@@ -218,6 +253,13 @@ async function main() {
 
   const roles = mapVolunteersToRoles(volunteers, getNextSundaySydneyTime());
   exportVolunteersToTemplateFile(roles); // or any further processing
+
+  await sendEmailWithAttachment({
+  to: 'felix.pa.gaming@gmail.com',
+  subject: 'Sunday Volunteers List',
+  text: 'Attached is the Sunday volunteer roster.',
+  attachmentPath: './SSM_Comms_Template_FINAL.txt'
+});
 }
 
 main();
