@@ -254,10 +254,16 @@ async function main() {
   const roles = mapVolunteersToRoles(volunteers, getNextSundaySydneyTime());
   exportVolunteersToTemplateFile(roles); // or any further processing
 
+  const SSM_Members_Email = ["felix.agung@gmail.com", "victorsuseno11@gmail.com"]
+
   await sendEmailWithAttachment({
-  to: 'felix.pa.gaming@gmail.com',
-  subject: 'Sunday Volunteers List',
-  text: 'Attached is the Sunday volunteer roster.',
+  to: SSM_Members_Email,
+  subject: 'Automated SSM Communication Template',
+  text: 'Hi Team,\n\n' +
+  'Attached is the automatically generated "SSM Communication Template" that you can copy paste to your managed Whatsapp group.\n' +
+  'Please make sure to double check it\'s record with Elvanto.\n\n\n' +
+  'Thank you and God Bless,\n' +
+  'SSM Bot',
   attachmentPath: './SSM_Comms_Template_FINAL.txt'
 });
 }
