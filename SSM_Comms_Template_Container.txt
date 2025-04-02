@@ -1,0 +1,52 @@
+Hi All,
+ 
+Here is the list of minister for next Sunday Service
+*{{serviceDate}}*
+
+*SERVICE*
+Worship Leader: {{worshipLeader}}
+Singer#1: {{singerOne}}
+Singer#2: {{singerTwo}}
+Acoustic Guitar: {{acousticGuitar}}
+Electric Guitar: {{electricGuitar}}
+Bass: {{bassist}}
+Drum: {{drummer}}
+Keyboard: {{keyboardist}}
+Sound: {{soundEngineer}}
+SSM: {{sundayServiceManager}}
+_MD_: {{musicDirector}}
+
+*
+
+*DISICPLESHIP*
+Offering Speaker: {{offeringSpeaker}}
+
+*
+
+*MULTIMEDIA*
+Multimedia Operator: {{multimediaOperator}}
+Livestream Operator: {{livestreamOperator}}
+
+*
+
+*PREACHER*
+Preacher: {{preacher}}
+
+
+— * — 
+ 
+Please fill out the following decision of the songs and the key:
+ 
+*Songs:*
+1.
+2.
+ 
+ 
+*Special Announcements:*
+1.
+2.
+ 
+ 
+ 
+Thank you everyone! Happy ministry!
+NOTE: Storage key is held by *(To be communicated)*
