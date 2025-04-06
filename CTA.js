@@ -218,7 +218,7 @@ async function sendEmailWithAttachment({
   });
 
   const mailOptions = {
-    from: '"SSM Communication Template Project Bot" <felix.agung@gmail.com>',
+    from: '"SSM CT Bot" <felix.agung@gmail.com>',
     to,
     subject,
     text,
@@ -254,7 +254,7 @@ async function main() {
   const roles = mapVolunteersToRoles(volunteers, getNextSundaySydneyTime());
   exportVolunteersToTemplateFile(roles); // or any further processing
 
-  const SSM_Members_Email = ["felix.agung@gmail.com", "victorsuseno11@gmail.com"]
+  const SSM_Members_Email = ["felix.agung@gmail.com", "victorsuseno11@gmail.com", "Axlibrata@gmail.com", "elvinariyadi@gmail.com"]
 
   await sendEmailWithAttachment({
   to: SSM_Members_Email,
