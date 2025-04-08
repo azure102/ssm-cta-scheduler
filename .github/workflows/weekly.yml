@@ -1,8 +1,8 @@
-name: Weekly Script
+name: Weekly Script SSM
 
 on:
   schedule:
-    - cron: '0 12 * * 1'  # Every Monday at 12:00 UTC
+    - cron: "0 12 * * 1"  # Every Monday at 12:00 UTC
   
   workflow_dispatch:       # Manual run button
 
