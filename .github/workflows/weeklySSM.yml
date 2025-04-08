@@ -1,9 +1,9 @@
-name: Weekly Script SSM
+name: Weekly Script
 
 on:
-  workflow_dispatch:
   schedule:
-  - cron: '*/5 * * * *'  # Every Monday at 12:00 UTC
+    - cron: '0 2 * * 1'  # Every Monday 12PM AEST (2AM UTC)
+  workflow_dispatch:
 
 jobs:
   run:
@@ -17,6 +17,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Run script
         run: node CTA.js
