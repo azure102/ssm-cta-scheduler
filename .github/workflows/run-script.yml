@@ -1,11 +1,9 @@
 name: Weekly Script
 
-# Trigger refresh on GitHub
-
 on:
   schedule:
-    - cron: '1 12 * * 1'  # Every Monday at 12:00 UTC
-  workflow_dispatch:       # Manual run button
+    - cron: '0 12 * * 1'  # Every Monday at 12:00 UTC
+  workflow_dispatch:
 
 jobs:
   run:
@@ -15,16 +13,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run script
-        run: node CTA.js
-        env:
-          EMAIL_USER: ${{ secrets.EMAIL_USER }}
-          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+      - name: Run a test
+        run: echo "✅ Scheduled job ran successfully"
