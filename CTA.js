@@ -170,7 +170,7 @@ function mapVolunteersToRoles(volunteers, nextSundayDate) {
 
       if(vol.position_name === 'Acoustic Guitar') roles.acousticGuitar = fullName;
       else if(vol.position_name === 'Electric Guitar') roles.electricGuitar = fullName;
-      else if(vol.position_name === 'Bass Guitar') roles.bassGuitar = fullName;
+      else if(vol.position_name === 'Bass Guitar') roles.bassist = fullName;
       else if(vol.position_name === 'Drum') roles.drummer = fullName;
       else if(vol.position_name === 'Keyboard') roles.keyboardist = fullName;
       else if(vol.position_name === 'Sound Engineer') roles.soundEngineer = fullName;
