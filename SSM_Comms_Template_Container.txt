@@ -5,8 +5,7 @@ Here is the list of minister for next Sunday Service
 
 *SERVICE*
 Worship Leader: {{worshipLeader}}
-Singer#1: {{singerOne}}
-Singer#2: {{singerTwo}}
+Singer(s): {{singer}}
 Acoustic Guitar: {{acousticGuitar}}
 Electric Guitar: {{electricGuitar}}
 Bass: {{bassist}}
