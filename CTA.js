@@ -146,6 +146,7 @@ function mapVolunteersToRoles(volunteers, nextSundayDate) {
         keyboardist: 'No Volunteer Set in Elvanto',
         soundEngineer: 'No Volunteer Set in Elvanto',
         sundayServiceManager: 'No Volunteer Set in Elvanto',
+        iPrayLead: 'No Volunteer Set in Elvanto',
         musicDirector: 'No Volunteer Set in Elvanto',
         offeringSpeaker: 'No Volunteer Set in Elvanto',
         multimediaOperator: 'No Volunteer Set in Elvanto',
@@ -177,6 +178,7 @@ function mapVolunteersToRoles(volunteers, nextSundayDate) {
             else if (vol.position_name === 'Keyboard') roles.keyboardist = volunteerNames;
             else if (vol.position_name === 'Sound Engineer') roles.soundEngineer = volunteerNames;
             else if (vol.position_name === 'SSM In Charge') roles.sundayServiceManager = volunteerNames;
+            else if (vol.position_name === 'iPray Lead') roles.roles.iPrayLead = volunteerNames;    
             else if (vol.position_name === 'Music Director (MD)') roles.musicDirector = volunteerNames;
             else if (vol.position_name === 'Multimedia Operator') roles.multimediaOperator = volunteerNames; //MULTIMEDIA
             else if (vol.position_name === 'Livestream Operator') roles.livestreamOperator = volunteerNames;
