@@ -17,8 +17,13 @@ _MD_: {{musicDirector}}
 
 *
 
-*DISICPLESHIP*
+*SEED*
 Offering Speaker: {{offeringSpeaker}}
+
+*
+
+*IPRAY*
+iPray Lead: {{iPrayLead}}
 
 *
 
